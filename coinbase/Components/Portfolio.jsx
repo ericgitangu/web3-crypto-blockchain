@@ -8,39 +8,32 @@ import { ThirdwebSDK } from '@thirdweb-dev/sdk'
 import { useSDK } from '@thirdweb-dev/react'
 import { Contract } from 'ethers'
 
-const Portfolio = ({ twTokens, sanityTokens, walletAddress }) => {
-    const [walletBalance, setWalletBalance] = useState(0)
+const Portfolio = ({ sanityTokens, walletAddress }) => {
+    const [walletBalance, setWalletBalance] = useState(0.0)
     const [sender] = useState(walletAddress)
     const sdk = useSDK()
 
-    const getBalance = async activeTwToken => {
-        const balance = await activeTwToken.balanceOf(sender)
-        return parseInt(balance.displayValue)
-      }
-    
-      useEffect(()=> {
+    useEffect(()=> {
         const calculateTotalBalance = async () => {
-          setWalletBalance(0)
-          
-          sanityTokens.map(async token => {
-            const contracts = await sdk.getContractList(walletAddress)
-            contracts.map(contract => {
-                const tk = sdk.getToken(contract.address)
-                tk.balance(contract.address).then(bal => {
-                    const balance = parseInt(bal.displayValue) * parseInt(token.usdPrice)
-                    if(balance)
-                        setWalletBalance( prevState => prevState + balance)
+        setWalletBalance(0.0)
+
+        let total = parseFloat('0')
+        const contracts = await sdk.getContractList(walletAddress)
+        contracts.map(contract => {
+            const token = sdk.getToken(contract.address)
+            token.balance(contract.address).then(balance => {
+                sanityTokens.map(sanityToken => {
+                    if(balance.symbol === sanityToken.symbol) {
+                        total += parseFloat(sanityToken.usdPrice) * parseFloat(balance.displayValue)
+                    }
+                    setWalletBalance(total)
                 })
             })
-            
-          })
+        })
         }
-    
-        if (sanityTokens.length > 0 && twTokens.length > 0) {
-          calculateTotalBalance()
-        }
-
-      }, [twTokens, sanityTokens])
+        calculateTotalBalance()
+        
+    }, [sanityTokens])
   return (
     <Wrapper>
     <Content>

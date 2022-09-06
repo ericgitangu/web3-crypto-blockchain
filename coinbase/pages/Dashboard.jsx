@@ -45,7 +45,6 @@ const Dashboard = ({address}) => {
                 walletAddress={address}
             />
             <Main
-                twTokens={twTokens}
                 sanityTokens={sanityTokens}
                 walletAddress={address}
             />
