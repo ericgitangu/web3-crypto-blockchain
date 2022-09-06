@@ -1,21 +1,20 @@
 import styled from 'styled-components'
-import { useAddress, useMetamask, useDisconnect } from "@thirdweb-dev/react"
+import { useAddress, useMetamask } from "@thirdweb-dev/react"
+import Dashboard from './Dashboard';
 
 export default function Home() {
   const address = useAddress();
   // This function will allow the user to connect their metamask wallet to our page
   const connectWithMetamask = useMetamask();
-  const disconnectWallet = useDisconnect();
   return (
     <Wrapper>
       {address ? (
-        <>
-          <Button onClick={(disconnectWallet)}>Disconnect Wallet</Button>
-          <Details>Your address: {address}</Details>
-        </>
+        <WalletConnect>
+          <Dashboard address={address}/>
+        </WalletConnect>
       ) : (
         <WalletConnect>
-          <Button onClick={(connectWithMetamask)}>Connect Wallet with Metamask</Button> 
+          <Button onClick={connectWithMetamask}>Connect Wallet with Metamask</Button> 
           <Details>
             You need Chrome to be
             <br /> able to run this app.
