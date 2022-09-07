@@ -37,10 +37,7 @@ This will run sanity studio on http://localhost:3333
 
 ## Demo:
 
-A video of the full functioning Dapp running on localhost:3000 and the corresponding sanity studio running on localhost:3333 or on [YouTube](https://youtu.be/SZauJo7CqpM)
-
-(Attached) Video quality reduced to 480p allow cap on uploaded Github, the Youtube version offers better quality should this be too grainy. 
-https://user-images.githubusercontent.com/11472845/188873937-14755885-d4f9-414c-a885-5ea4b4d8f8c2.mov
+A video of the full functioning Dapp running on localhost:3000 and the corresponding sanity studio running on localhost:3333 available on [YouTube](https://youtu.be/SZauJo7CqpM)
 
 
 
