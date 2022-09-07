@@ -3,5 +3,12 @@
     "add": "^2.0.6",
     "react-spinners": "^0.13.4",
     "yarn": "^1.22.19"
-  }
+  },
+  "name": "Coinbase",
+  "version": "1.0.0",
+  "description": "Web3 - Crypto Blockchain with NextJS, React, thirdWeb & Sanity ",
+  "main": "index.js",
+  "repository": "https://github.com/ericgitangu/web3-crypto-blockchain",
+  "author": "Eric Gitangu <developer.ericgitangu@gmail.com>",
+  "license": "MIT"
 }

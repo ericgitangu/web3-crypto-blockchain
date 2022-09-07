@@ -33,7 +33,7 @@ const Portfolio = ({ sanityTokens, walletAddress }) => {
         }
         calculateTotalBalance()
         
-    }, [sanityTokens])
+    }, [sanityTokens, sender, sdk])
   return (
     <Wrapper>
     <Content>
