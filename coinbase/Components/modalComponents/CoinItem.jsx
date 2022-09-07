@@ -19,10 +19,10 @@ const CoinItem = ({
 
     useEffect(() => {
         const getBalance = async () => {
-            const contracts = await sdk.getContractList(sender)
+            const contracts = await sdk.getContractList(token.contractAddress)
             contracts.map(contract => {
                 const tkn = sdk.getToken(contract.address)
-                tkn.balanceOf(contract.address).then(balance => {
+                tkn.balance(contract.address).then(balance => {
                     if(balance.symbol === token.symbol) {
                         setBalance(balance.displayValue)
                     }

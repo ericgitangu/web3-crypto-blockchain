@@ -20,7 +20,7 @@ const Transfer = ({ setAction, selectedToken, walletAddress }) => {
             const contracts = await sdk.getContractList(sender)
             contracts.map(contract => {
                 const token = sdk.getToken(contract.address)
-                token.balanceOf(contract.address).then(balance => {
+                token.balance(contract.address).then(balance => {
                     if(balance.symbol === selectedToken?.symbol) {
                         setActiveTwToken(token)
                         setBalance(balance.displayValue)
@@ -31,7 +31,7 @@ const Transfer = ({ setAction, selectedToken, walletAddress }) => {
             })
         }
         getBalance()
-      }, [])
+      }, [activeTwToken])
       useEffect(() => {
         try{
             const url = builder.image(selectedToken?.logo.asset._ref).url()
