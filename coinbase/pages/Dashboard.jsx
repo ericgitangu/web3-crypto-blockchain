@@ -40,7 +40,6 @@ const Dashboard = ({address}) => {
         <Sidebar/>
         <MainContainer>
             <Header
-                twTokens={twTokens}
                 sanityTokens={sanityTokens}
                 walletAddress={address}
             />

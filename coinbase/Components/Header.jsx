@@ -4,10 +4,9 @@ import Modal from 'react-modal'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import TransferModal from './modalComponents/TransferModal'
-import { useDisconnect } from "@thirdweb-dev/react"
-// Modal.setAppElement('#_next')
+import { useDisconnect, ConnectWallet } from "@thirdweb-dev/react"
 
-const Header = ({ twTokens, sanityTokens, walletAddress, connectWallet }) => {
+const Header = ({ sanityTokens, walletAddress, connectWallet }) => {
     const router = useRouter()
     const disconnectWallet = useDisconnect();
     const customStyles = {
@@ -42,9 +41,7 @@ const Header = ({ twTokens, sanityTokens, walletAddress, connectWallet }) => {
         </WalletLink>
         </>
       ) : (
-        <Button onClick={() => connectWallet('injected')}>
-          Connect Wallet
-        </Button>
+        <ConnectWallet accentColor="#3773f5" colorMode="dark" />
       )}
       <Button style={{ backgroundColor: '#3773f5', color: '#000' }}>
         Buy / Sell
@@ -57,12 +54,12 @@ const Header = ({ twTokens, sanityTokens, walletAddress, connectWallet }) => {
     <ProfileIcon />
 
     <Modal
+      ariaHideApp={false}
       isOpen={!!router.query.transfer}
       onRequestClose={() => router.push('/')}
       style={customStyles}
     >
       <TransferModal
-        twTokens={twTokens}
         sanityTokens={sanityTokens}
         walletAddress={walletAddress}
       />

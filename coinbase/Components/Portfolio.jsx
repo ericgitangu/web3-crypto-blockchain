@@ -4,9 +4,7 @@ import Coin from './Coin'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { coins } from '../static/coins'
 import BalanceChart from './BalanceChart'
-import { ThirdwebSDK } from '@thirdweb-dev/sdk'
 import { useSDK } from '@thirdweb-dev/react'
-import { Contract } from 'ethers'
 
 const Portfolio = ({ sanityTokens, walletAddress }) => {
     const [walletBalance, setWalletBalance] = useState(0.0)
@@ -18,7 +16,7 @@ const Portfolio = ({ sanityTokens, walletAddress }) => {
         setWalletBalance(0.0)
 
         let total = parseFloat('0')
-        const contracts = await sdk.getContractList(walletAddress)
+        const contracts = await sdk.getContractList(sender)
         contracts.map(contract => {
             const token = sdk.getToken(contract.address)
             token.balance(contract.address).then(balance => {
@@ -28,6 +26,8 @@ const Portfolio = ({ sanityTokens, walletAddress }) => {
                     }
                     setWalletBalance(total)
                 })
+            }).catch(err => {
+                console.warn(err)
             })
         })
         }
