@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Transfer from './Transfer'
 import CoinSelector from './CoinSelector'
 import Receive from './Receive'
+import ClipLoader from 'react-spinners/ClipLoader';
 
 const TransferModal = ({ sanityTokens, walletAddress }) => {
   const [action, setAction] = useState('send')
