@@ -4,7 +4,6 @@ import imageUrlBuilder from '@sanity/image-url'
 import { client } from '../../lib/sanity'
 import { BiCopy } from 'react-icons/bi'
 import { FaCheck } from 'react-icons/fa'
-import Image from 'next/image'
 
 const Receive = ({ setAction,  selectedToken, walletAddress }) => {
     const [imageUrl, setImageUrl] = useState(null)
@@ -19,7 +18,7 @@ const Receive = ({ setAction,  selectedToken, walletAddress }) => {
     <Wrapper>
     <Content>
       <QRContainer>
-        <Image
+        <img
           src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${walletAddress}`}
         alt={imageUrl}/>
       </QRContainer>
@@ -27,7 +26,7 @@ const Receive = ({ setAction,  selectedToken, walletAddress }) => {
       <Row>
         <CoinSelectList onClick={() => setAction('select')}>
           <Icon>
-            <Image src={imageUrl} alt={imageUrl} />
+            <img src={imageUrl} alt={imageUrl} />
           </Icon>
           <CoinName>{selectedToken?.name}</CoinName>
         </CoinSelectList>
