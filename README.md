@@ -33,7 +33,7 @@ This will run sanity studio on http://localhost:3333
 
 ## Run deployed version:
 
-[Hosted CryptoCurrency Dapp - Coibase Clone](https://crypto.ericgitangu.com)
+[Hosted CryptoCurrency Dapp - Coinbase Clone](https://crypto.ericgitangu.com)
 
 ## Demo:
 
